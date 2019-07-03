@@ -1,0 +1,46 @@
+  <?php
+
+	session_start();
+
+        $page = $_GET['opsi'];
+        $dashboard_state="";
+        $partner_state="";
+        $officer_state="";
+        $item_state="";
+        
+        
+        if($page == 'dashboard')
+	{ $dashboard_state = "active"; }
+
+        if($page == 'partner')
+	{ $partner_state = "active"; }
+
+        if($page == 'officer')
+	{ $officer_state = "active"; }
+
+        if($page == 'item')
+	{ $item_state = "active"; }
+
+  ?>
+  
+  
+  <ul class="sidebar-menu">
+        <li class="nav-level">Navigation</li>
+
+        <li class="<?php echo $dashboard_state." "; ?> treeview">
+            <a class="waves-effect" href="/?opsi=dashboard"><i class=""></i><span>Dashboard</span></a>
+        </li>
+        
+        <li class="<?php echo $partner_state." "; ?> treeview">
+            <a class="waves-effect" href="/?opsi=partner"><i class=""></i><span>Register Partner</span></a>
+        </li>
+                    
+        <li class="<?php echo $officer_state." "; ?> treeview">
+            <a class="waves-effect" href="/?opsi=officer"><i class=""></i><span>Register Officer</span></a>
+        </li>
+                    
+        <li class="<?php echo $item_state." "; ?> treeview">
+            <a class="waves-effect" href="/?opsi=item"><i class=""></i><span>Register Item</span></a>
+        </li>
+                    
+    </ul>

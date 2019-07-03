@@ -1,0 +1,73 @@
+<?php
+
+session_start();
+
+#if ($_SESSION[mode_login] == 1) {
+	$sql_user = "select * from tbl_user where session='$session'";
+	$result_user = $conn->query($sql_user);
+	$row_user = $result_user->fetch_assoc();
+
+	/* jika aplog */
+	if ($row_user[level] == 1 and $row_user[id_parent] == 0) {
+		$result_aplog = $conn->query("select id,id_officer from tbl_item where id_officer not in (select id from tbl_user where id_parent =".$row_user[id].")");
+##echo "select id,id_officer from tbl_item where id_officer in (select id from tbl_user where id_parent = ".$row_user[id].")";
+#		$result_aplog = $conn->query("select id from tbl_user where id_parent = ".$row_user[id]);
+		while($row_aplog = $result_aplog->fetch_assoc()) {
+			echo $row_aplog[id];
+		}	
+	}
+	
+
+#}
+
+
+$sql = "select id,qty,kategori,panjang,lebar,tinggi,berat from tbl_item where id=40";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+
+	for ($i=0;$i<=$row[qty]-1;$i++) {
+
+		/* start komparasi dari table item */
+
+		$kategori = $row[kategori];	
+		$kategori = explode("|", $kategori);
+
+               	$panjang = $row[panjang];
+               	$panjang = explode("|", $panjang);
+
+               	$lebar = $row[lebar];
+               	$lebar = explode("|", $lebar);
+
+               	$tinggi = $row[tinggi];
+               	$tinggi = explode("|", $tinggi);
+
+               	$berat = $row[berat];
+               	$berat = explode("|", $berat);
+	
+		/* end */
+
+		/* komparasi dari table ra */
+
+		$sql_ra = "select kategori from tbl_regulated_agent where id_item=".$row[id]." and posisi_item=".$i;
+		$result_ra = $conn->query($sql_ra);
+		$row_ra = $result_ra->fetch_assoc();
+
+		$kategori_ra = $row_ra[kategori];
+               	$panjang_ra = $row_ra[panjang];
+               	$lebar_ra = $row_ra[lebar];
+               	$tinggi_ra = $row_ra[tinggi];
+               	$berat_ra = $row_ra[berat];
+
+		/* end */
+
+		echo $kategori[$i]."=$kategori_ra<br>"; 
+
+	}
+
+
+    }
+}
+$conn->close();
+
+?>

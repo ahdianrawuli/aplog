@@ -1,0 +1,102 @@
+<div class="wikidoc">
+<p><a href="http://vatgm.codeplex.com/wikipage?title=Development"><font size="2">Development</font></a><font size="2"> |
+</font><a href="http://vatgm.codeplex.com/wikipage?title=Next%20steps"><font size="2">Next steps</font></a><font size="2"> |
+</font><a href="http://vatgm.codeplex.com/wikipage?title=Legal"><font size="2">Legal stuff</font></a><font size="2"> |
+</font><a href="http://vatgm.codeplex.com/wikipage?title=Ground%20overlay%20charts"><font size="2">Providing charts</font></a><font size="2"> |
+</font><a href="http://vatgm.codeplex.com/wikipage?title=Impressions"><font size="2">Impressions</font></a><font size="2"> |
+</font><a href="https://fsxws.codeplex.com/" target="_blank"><font size="2">FsxWs</font></a><font size="2"> |
+</font><a href="http://vatgm.codeplex.com/wikipage?title=Include"><font size="2">Include VatGM</font></a></p>
+<h2>Using VatGM on your website</h2>
+<p>You can include VatGM on your own website and hence display VATSIM flights. However
+<strong>you are responsible</strong> for:</p>
+<ol>
+<li>Checking the Google maps license agreements and make sure, that you are compliant with them.
+</li><li>If your web site has high traffic, you need to install VatGM on your servers. Otherwise we will exceed our quota. No linking from our sites is allowed without permission, just get in touch with us.
+</li><li>VatGM uses Google Analytics. Make sure your user know this, this is required information.
+</li></ol>
+<h2>How to include?</h2>
+<p>You can seamlessly integrate VatGM via an <span style="font-family:'Courier New'">
+iframe</span>. An example is <a href="http://klausbasan.de/vatgm/DisplayIncludeDemo.htm">
+available here</a>. The location, and behavior can be controlled via query parameters</p>
+<table border="1" cellspacing="0" cellpadding="2" width="700">
+<tbody>
+<tr>
+<td valign="top" width="146"><strong>Parameter</strong></td>
+<td valign="top" width="74"><strong>Values</strong></td>
+<td valign="top" width="479"><strong>Description</strong></td>
+</tr>
+<tr>
+<td valign="top" width="146">gmzoom</td>
+<td valign="top" width="74">3..11</td>
+<td valign="top" width="479">GM Zoom level</td>
+</tr>
+<tr>
+<td valign="top" width="146">gmlat / gmlng</td>
+<td valign="top" width="74">Number</td>
+<td valign="top" width="479">Latitude / Longitude</td>
+</tr>
+<tr>
+<td valign="top" width="146">gmoverview</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Show the GM overview box (pan &amp; scan) in the right corner</td>
+</tr>
+<tr>
+<td valign="top" width="146">gmplace</td>
+<td valign="top" width="74">String</td>
+<td valign="top" width="479">Location such as “Europe”, “Germany”, “EDDF,Frankfurt,Germany”
+</td>
+</tr>
+<tr>
+<td valign="top" width="146">&nbsp;</td>
+<td valign="top" width="74">&nbsp;</td>
+<td valign="top" width="479">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" width="146">displaysimplifiedicon</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Display simple dots instead of plane symbols, useful for small maps</td>
+</tr>
+<tr>
+<td valign="top" width="146">displayairport</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Display airports</td>
+</tr>
+<tr>
+<td valign="top" width="146">displayatc</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Display ATC</td>
+</tr>
+<tr>
+<td valign="top" width="146">displayflight</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Display flights, e.g. you could just display ATC, but no flights</td>
+</tr>
+<tr>
+<td valign="top" width="146">displayonground</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Show planes still on ground</td>
+</tr>
+<tr>
+<td valign="top" width="146">displayflightwaypoints</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Display waypoints for flights, usually requires further parameters such as
+<font face="Courier New">displaywaypointlines</font></td>
+</tr>
+<tr>
+<td valign="top" width="146">displaywaypointlines</td>
+<td valign="top" width="74">true | false</td>
+<td valign="top" width="479">Track flight by a list of waypoint connected by a line</td>
+</tr>
+<tr>
+<td valign="top" width="146">followid</td>
+<td valign="top" width="74">Number</td>
+<td valign="top" width="479">VATSIM id to be followed</td>
+</tr>
+</tbody>
+</table>
+<p>Important: VatGM is JavaScript based,&#160; hence it is mainly computed at the users browser. This might have impact on the load on the users machine (CPU,&#160; memory).&#160; So please carefully evaluate the following scenarios:</p>
+<ol>
+<li>Using VatGM on a website which primarily targets mobile devices with poor CPU power. Solution: On include if client is suitable.
+</li><li>Including VatGM several times – while possible – can mean a considerable memory and CPU consumption of the browser.
+</li></ol>
+</div><div class="ClearBoth"></div>

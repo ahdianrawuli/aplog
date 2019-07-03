@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Entities",
+      "DisplayName": "Entities"
+    },
+    "ClosedComment": "Solved as of 0.9",
+    "ClosedDate": "2012-10-11T16:03:54.133-07:00",
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Helicopters can hover (with a ground speed of 0) and would look much better with a helicopter icon. But how to determine if a flight is a helicopter?",
+    "LastUpdatedDate": "2017-12-10T12:32:10.977-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "VatGM",
+    "ReportedDate": "2011-09-30T12:44:18.153-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Distinguish helicopters and planes ",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 3
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Done, will be part of 0.9",
+      "PostedDate": "2012-10-11T16:03:11.477-07:00",
+      "Id": 79556
+    }
+  ]
+}

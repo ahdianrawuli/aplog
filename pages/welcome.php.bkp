@@ -1,0 +1,379 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="main-header">
+      <h4>Welcome
+      </h4>
+    </div>
+  </div>
+  <!-- <div class="row m-b-30 dashboard-header">
+    <div class="col-lg-3 col-sm-6">
+      <div class="col-sm-12 card dashboard-product">
+        <span>Products
+        </span>
+        <h2 class="dashboard-total-products counter">4500
+        </h2>
+        <span class="label label-warning">Orders
+        </span>New Orders
+        <div class="side-box bg-warning">
+          <i class="icon-social-soundcloud">
+          </i>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  <!-- Register For Partner -->
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-header">
+                  <h5 class="card-header-text">Register Officer
+                  </h5>
+                  <!--
+                  <div class="f-right">
+                    <a href="" data-toggle="modal" data-target="#textual-input-Modal">
+                      <i class="icofont icofont-code-alt">
+                      </i>
+                    </a>
+                  </div>
+                  -->
+              </div>
+              
+              <div class="card-block">
+                  <form>
+                      <div class="form-group row">
+						 <div class="col-md-3">
+						    <div class="md-input-wrapper">
+							    <input type="text" class="md-form-control" required="" name=fname>
+									<label>First Name</label>
+							</div>
+						 </div>
+						 <div class="col-md-3">
+							<div class="md-input-wrapper">
+								<input type="text" class="md-form-control" required="" name=lname>
+								<label>Last Name</label>
+							</div>
+						</div>
+					  </div>
+					  
+					  <div class="form-group row">
+                          <label class="col-xs-2 col-form-label form-control-label">Area</label>
+                          <div class="col-sm-10">
+                            <select class="js-example-basic-single" id="rp1" value="<?php echo $_GET[rp1];?>">
+                            <?php
+                            
+                            $sql = "select * from tbl_wilayah";
+                            select($sql,"column");
+                            
+                            foreach($get_column as $data) {
+                            
+                            	if ($data[0] == $_GET[rp1])
+                            		{$wilayah="selected";}
+                            	else
+                            		{$wilayah="";}
+                            
+                            	echo '<option value="'.$data[0].'" '.$wilayah.'>'.$data[1].'</option>';
+                            }
+                            
+                            ?>
+                            </select>
+                          </div> 
+                      </div>
+                      
+                      <div class="form-group row">
+                            <label class="col-xs-2 col-form-label form-control-label">Address</label>
+                            <div class="col-sm-10">
+                                <textarea class="col-xs-5 col-form-label form-control-label" id="adrs" rows="4"></textarea>
+                            </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  <!-- start innput untuk daftar barang -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-header-text">Daftarkan Barang
+          </h5>
+          <div class="f-right">
+            <a href="" data-toggle="modal" data-target="#textual-input-Modal">
+              <i class="icofont icofont-code-alt">
+              </i>
+            </a>
+          </div>
+        </div>
+        <div class="modal fade modal-flex" id="textual-input-Modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;
+                  </span>
+                </button>
+                <h5 class="modal-title">Silahkan melakukan input untuk barang/dokumen yang akan di daftarkan ke aplog 
+                </h5>
+              </div>
+            </div>
+            <!-- end of modal-content -->
+          </div>
+          <!-- end of modal-dialog -->
+        </div>
+        <!-- end of modal -->
+        <div class="card-block">
+          <form>
+            <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label form-control-label">Nama Perusahaan/Individu
+              </label>
+              <div class="col-sm-10">
+                <input class="form-control" type="text" placeholder="Masukan nama perushaan/individu" id="d1" value="<?php echo $_GET[d1];?>">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-search-input" class="col-xs-2 col-form-label form-control-label">No. Telepon
+              </label>
+              <div class="col-sm-10">
+                <input class="form-control" type="tel" placeholder="Masukan nomor kontak yang bisa dihubungi" id="d2" value="<?php echo $_GET[d2];?>">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Email
+              </label>
+              <div class="col-sm-10">
+                <input class="form-control" type="email" id="d3" value="<?php echo $email;?>" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Tentukan Tujuan
+              </label>
+              <div class="col-sm-10">
+                <select class="js-example-basic-single" id="d4" value="<?php echo $_GET[d4];?>">
+<?php
+
+$sql = "select * from bandara";
+select($sql,"column");
+
+foreach($get_column as $data) {
+
+	if ($data[1] == $_GET[d4])
+		{$bandara_select="selected";}
+	else
+		{$bandara_select="";}
+
+	echo '<option value="'.$data[1].'" '.$bandara_select.'>'.$data[2].'</option>';
+}
+
+?>
+                </select>
+              </div> 
+            </div>
+            <div class="form-group row">
+              <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Jumlah barang/dokumen
+              </label>
+              <div class="col-sm-2">
+                <select class="form-control" id="userInput" onchange="jumlah_data()">
+                  <?php 
+for ($x=1;$x<=10;$x++)
+{
+if ($_GET['jumlah_data']==$x)
+{
+$select='selected';
+}
+else
+{
+$select='';
+}
+echo '<option value="'.$x.'" '.$select.'>'.$x.' pcs</option>';
+}
+?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <script>
+                  function jumlah_data(){
+                    var d1 = document.getElementById('d1').value;
+                    var d2 = document.getElementById('d2').value;
+                    var d3 = document.getElementById('d3').value;
+                    var d4 = document.getElementById('d4').value;
+                    var userInput = document.getElementById('userInput').value;
+                    window.location.href = "/?opsi=welcome&jumlah_data="+userInput+'&d1='+d1+'&d2='+d2+'&d3='+d3+'&d4='+d4;
+                  }
+                </script>
+                <ul class="nav nav-tabs  tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#data1" role="tab">
+                      <label class="badge bg-info">1
+                      </label>
+                      <a>
+                        </li>
+                      <?php
+if ($_GET['jumlah_data'] !== NULL)
+{
+$jumlah_data = $_GET['jumlah_data'];
+for ($i = 2;$i <= $jumlah_data;$i++)
+{
+echo '<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#data' . $i . '" role="tab"><label class="badge bg-info">' . $i . '</label><a></li>';
+}
+}
+?>
+                      </ul>
+                    <div class="tab-content tabs">
+                      <br>
+                      <div class="tab-pane active" id="data1" role="tabpanel">
+                        <div class="form-group row">
+                          <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Kategori
+                          </label>
+                          <div class="col-xs-2 col-form-label form-control-label">
+                            <select class="js-example-basic-single">
+                              <optgroup label="Sandang">
+                                <option value="AL">Pakaian
+                                </option>
+                                <option value="WY">Tas kecil
+                                </option>
+                                <option value="WY">Tas besar
+                                </option>                                
+                              </optgroup>
+                              <optgroup label="Pangan">
+                                <option value="WY">Padat
+                                </option>
+                                <option value="WY">Cair
+                                </option>
+                              </optgroup>
+                              <optgroup label="Barang">
+                                <option value="WY">Elektronik
+                                </option>
+                                <option value="WY">Pecah belah
+                                </option>
+                              </optgroup>       
+                              <optgroup label="Dokumen">
+                                <option value="WY">Dokumen biasa
+                                </option>
+                                <option value="WY">Dokumen rahasia
+                                </option>
+                              </optgroup>                              
+                            </select>
+                          </div> 
+                        </div>
+                        <div class="form-group row">
+                          <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Panjang
+                          </label>
+                          <div class="col-xs-2 col-form-label form-control-label">
+                            <input class="form-control" type="number" placeholder="Panjang" id="example-email-input">
+                          </div>
+                        </div>         
+                        <div class="form-group row">
+                          <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Lebar
+                          </label>
+                          <div class="col-xs-2 col-form-label form-control-label">
+                            <input class="form-control" type="number" placeholder="Lebar" id="example-email-input">
+                          </div>
+                        </div>                     
+                        <div class="form-group row">
+                          <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Tinggi
+                          </label>
+                          <div class="col-xs-2 col-form-label form-control-label">
+                            <input class="form-control" type="number" placeholder="Tinggi" id="example-email-input">
+                          </div>
+                        </div> 
+                        <div class="form-group row">
+                          <label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Berat
+                          </label>
+                          <div class="col-xs-2 col-form-label form-control-label">
+                            <input class="form-control" type="number" placeholder="Berat" id="example-email-input">
+                          </div>
+                        </div>             
+                      </div>   
+                      <?php
+if ($_GET['jumlah_data'] !== NULL)
+{
+$jumlah_data = $_GET['jumlah_data'];
+for ($i = 2;$i <= $jumlah_data;$i++)
+{
+echo '
+<div class="tab-pane" id="data' . $i . '" role="tabpanel">
+<div class="form-group row">
+<label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Kategori
+</label>
+<div class="col-xs-2 col-form-label form-control-label">
+<select class="js-example-basic-single">
+<optgroup label="Sandang">
+<option value="AL">Pakaian
+</option>
+<option value="WY">Tas kecil
+</option>
+<option value="WY">Tas besar
+</option>                                
+</optgroup>
+<optgroup label="Pangan">
+<option value="WY">Padat
+</option>
+<option value="WY">Cair
+</option>
+</optgroup>
+<optgroup label="Barang">
+<option value="WY">Elektronik
+</option>
+<option value="WY">Pecah belah
+</option>
+</optgroup>       
+<optgroup label="Dokumen">
+<option value="WY">Dokumen biasa
+</option>
+<option value="WY">Dokumen rahasia
+</option>
+</optgroup>
+</select>
+</div> 
+</div>
+<div class="form-group row">
+<label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Panjang
+</label>
+<div class="col-xs-2 col-form-label form-control-label">
+<input class="form-control" type="number" placeholder="Panjang" id="example-email-input">
+</div>
+</div>         
+<div class="form-group row">
+<label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Lebar
+</label>
+<div class="col-xs-2 col-form-label form-control-label">
+<input class="form-control" type="number" placeholder="Lebar" id="example-email-input">
+</div>
+</div>                     
+<div class="form-group row">
+<label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Tinggi
+</label>
+<div class="col-xs-2 col-form-label form-control-label">
+<input class="form-control" type="number" placeholder="Tinggi" id="example-email-input">
+</div>
+</div> 
+<div class="form-group row">
+<label for="example-email-input" class="col-xs-2 col-form-label form-control-label">Berat
+</label>
+<div class="col-xs-2 col-form-label form-control-label">
+<input class="form-control" type="number" placeholder="Berat" id="example-email-input">
+</div>
+</div>                     
+</div>';
+}
+}
+?>
+                    </div>
+                  </div>
+              </div>  
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- end innput untuk daftar barang -->
+  </div>

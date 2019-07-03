@@ -1,0 +1,260 @@
+<?php
+
+session_start();
+include '../konfigurasi/cis_session.php';
+
+?>
+
+<title>APLOG Tracking System - Detail Item</title>
+
+<!-- untuk append data ra scan (ra_detail.php))-->
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $(".add-row").keypress(function(e){
+            if(e.which == 13)
+            {
+             	var barcode = $("#barcode").val();
+                document.getElementById(barcode).value = "1";
+                document.getElementById('checkin_'+barcode).innerHTML = "<font color=green><b>MASUK</b></font>";
+                $("[id='barcode']").each(function(){
+                $(this).val("");
+                });
+
+           }
+
+	});
+    });
+
+</script>
+<div class="container-fluid">
+	<div class="main-header"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+			<b>DEPART > </b><label class="text-success"><b>MANIFEST ITEM</b></label>
+	                    <input type="text" class="form-control form-control-lg add-row" id="barcode" placeholder="BARCODE SCAN" autofocus="autofocus">
+            </div>
+                    <!-- end of card-header  -->
+	<div class="row">
+       	    <div class="col-lg-12">
+            	<div class="project-table">
+                     <div class="col-sm-12 table-responsive">
+
+	<form method=POST action="/konfigurasi/cis_insert_site_onboard.php">
+
+	<table class="table table-hover">
+        <thead>
+            <tr>
+                <th><font size="2">No.</font></th>
+		<th><font size="2">Kode</font></th>
+		<th><font size="2">Nama</font></th>
+                <th><font size="2">Perusahaan</font></th>
+                <th><font size="2">Origin</font></th>
+                <th><font size="2">Destination</font></th>
+               	<th><font size="2">Kategori</font></th>
+               	<th><font size="2">P</font></th>
+               	<th><font size="2">L</font></th>
+               	<th><font size="2">T</font></th>
+               	<th><font size="2">B</font></th>
+		<th><font size="2">Flight</font></th>
+               	<th><font size="2"></font></th>
+            </tr>
+        </thead>
+
+		<tbody class="text-center">
+                    <?php
+
+$sql = "select id,nama_perusahaan,destination,qty,kategori,panjang,lebar,tinggi,berat, nama_item, origin from tbl_item where flight_number='$_GET[fln]' order by id DESC";
+$result = $conn->query($sql);
+$no=0;
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+	for ($i=0;$i<=$row[qty]-1;$i++) {
+		$no++;
+		/* start komparasi dari table item */
+
+		$id = $row[id];
+		$nama_perusahaan = $row[nama_perusahaan];
+		
+		$sql_origin = "select nama_bandara from tbl_bandara where id=".$row[origin];
+		$result_origin = $conn->query($sql_origin);
+		$row_origin = $result_origin->fetch_assoc();
+		$origin = $row_origin[nama_bandara];
+
+		$sql_dest = "select nama_bandara from tbl_bandara where id=".$row[destination];
+		$result_dest = $conn->query($sql_dest);
+		$row_dest = $result_dest->fetch_assoc();
+		$destination = $row_dest[nama_bandara];
+
+		$kategori = $row[kategori];	
+		$kategori = explode("|", $kategori);
+
+        $panjang = $row[panjang];
+       	$panjang = explode("|", $panjang);
+
+       	$lebar = $row[lebar];
+       	$lebar = explode("|", $lebar);
+
+       	$tinggi = $row[tinggi];
+       	$tinggi = explode("|", $tinggi);
+
+       	$berat = $row[berat];
+       	$berat = explode("|", $berat);
+	
+        $nama_item = $row[nama_item];
+        $nama_item = explode("|", $nama_item);
+                
+		/* end */
+
+		/* komparasi table tracking vs item */
+		$sql_tracking = "select count(*) as jumlah from tbl_tracking where id_item=".$row[id]." and posisi_item=".$i;
+		$result_tracking = $conn->query($sql_tracking);
+		$row_tracking = $result_tracking->fetch_assoc();
+		if($row_tracking[jumlah]){
+		    $sql_flight = "select flight, posisi from tbl_tracking where id_item=".$row[id]." and posisi_item=".$i;
+		}
+		else{
+		    $sql_flight = "select flight_number as flight from tbl_item where id=".$row[id];
+		}
+		$result_flight = $conn->query($sql_flight);
+        $row_flight = $result_flight->fetch_assoc();
+        if($row_flight[flight]==""){
+            $get_flight_data = "--";
+            $status_tracking = "--";
+		}
+		else
+		{
+		    $get_flight_data = $row_flight[flight];
+		    $status_tracking = $row_flight[posisi];
+		}
+		
+        /*
+		$sql_tracking = "select * from tbl_tracking where id_item=".$row[id]." and posisi_item=".$i;
+		$result_tracking = $conn->query($sql_tracking);
+		$row_tracking = $result_tracking->fetch_assoc();
+
+		if ($row_tracking[flight] == "")
+		{
+		    $get_flight = 0;
+		}
+		else
+		{
+		    $get_flight = $row_tracking[flight];
+		}
+
+                $sql_flight = "select kode_pesawat from tbl_flight_number where id=".$get_flight;
+               	$result_flight = $conn->query($sql_flight);
+               	$row_flight = $result_flight->fetch_assoc();
+
+		if ($row_flight[kode_pesawat] == null)
+		{
+		$get_flight_data = "--";
+		}
+		else
+		{
+		$get_flight_data = $row_flight[kode_pesawat];
+		}
+		*/
+        
+		/* $id_tracking = $row_tracking[id];
+		$kategori_tracking = $row_tracking[kategori];
+        $panjang_tracking = $row_tracking[panjang];
+       	$lebar_tracking = $row_tracking[lebar];
+       	$tinggi_tracking = $row_tracking[tinggi];
+       	$berat_tracking = $row_tracking[berat];
+		$posisi_tracking = $row_tracking[posisi]; */
+		
+		
+		$sql_time="select dateinsert, count(*) from log_tracking_item where id_item=".$id." and posisi_item=".$i."  and posisi ='".$status_tracking."'";
+		select($sql_time,"row");
+		
+		$valid=$get_row[1];
+		
+		if ($valid){
+		    $time = $get_row[0];
+		}
+		else{
+		    $sql_time="select dateinsert from tbl_item where id=".$id;
+		    select($sql_time,"row");
+		    
+		    $time = $get_row[0];
+		}
+		
+		
+		
+		if ($status_tracking == "ra") {
+			$status_tracking = "<font color=red><b>RA</b></font>";
+		}
+		else if ($status_tracking == "tko") {
+            $status_tracking = "<font color=orange><b>TK-Out</b></font>";
+        }
+        else if ($status_tracking == "st_on") {
+            $status_tracking = "<font color=green><b>On Board</b></font>";
+        }
+        else if ($status_tracking == "st_off") {
+            $status_tracking = "<font color=green><b>Off Board</b></font>";
+        }
+		else if ($status_tracking == "tki") {
+            $status_tracking = "<font color=blue><b>TK-In</b></font>";
+        }
+		else {
+            $status_tracking = "--";
+        }
+
+		/* end */
+
+                $sql_kategori = "select kategori from tbl_kategori where id=".$kategori[$i];
+               	$result_kategori = $conn->query($sql_kategori);
+                $row_kategori = $result_kategori->fetch_assoc();
+
+		#echo $kategori[$i]."=$kategori_tracking $posisi_tracking $id_tracking ".$row[id]."<br>"; 
+		$barcode = "$id-$i";
+		echo "<tr color=red>
+		<td><font size=2>$no</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=barcode[] value='$id-$i' readonly> $id-$i</font></td>
+		<td><font size=2>".strtoupper($nama_item[$i])."</font></td>
+		<td><font size=2>".strtoupper($nama_perusahaan)."</font></td>
+		<td><font size=2>$origin</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=destination[] value='$destination' readonly> $destination</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=kategori[] value='$row_kategori[kategori]' readonly> $row_kategori[kategori]</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=panjang[] value='$panjang[$i]' readonly> $panjang[$i]</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=lebar[] value='$lebar[$i]' readonly> $lebar[$i]</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=tinggi[] value='$tinggi[$i]' readonly> $tinggi[$i]</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=berat[] value='$berat[$i]' readonly> $berat[$i]</font></td>
+		<td><font size=2><input type=hidden class='form-control input-sm key' name=flight_number[] value='$get_flight_data' readonly> <b>$get_flight_data</b></font></td>
+		<td><font size=2><input type=hidden id='$id-$i' name='validasi[]' value=0 readonly><div id='checkin_$id-$i'>________</div></font></td>
+		</tr>";
+	}
+
+
+    }
+}
+$conn->close();
+
+?>
+                                        </tbody>
+                                    </table>
+    <div class="form-group row" align="right">
+    <div class="col-sm-12">
+        <input type="submit" class="btn btn-primary waves-effect waves-light" value="SIMPAN">
+    </div>
+    </div>
+				    </form>
+                                    <!-- end of table -->
+                                </div>
+                                <!-- end of table responsive -->
+                            </div>
+                            <!-- end of project table -->
+                        </div>
+                        <!-- end of col-lg-12 -->
+                    </div>
+                <!-- end of row -->
+                </div>
+            </div>
+        </div>
+    </div>

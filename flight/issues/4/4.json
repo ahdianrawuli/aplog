@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Vatsim data file is refreshed only cca per 2 minutes, so there is no need to have 30sec and 60sec refresh interval. Moreover, VATSIM server will deny requestes with this timing saying that you are downloading data-file too often.\r\n\r\nCan you please add 2 (3, 5) minutes refresh intervals for VATSIM data?",
+    "LastUpdatedDate": "2014-06-07T04:00:07.503-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "VatGM",
+    "ReportedDate": "2014-06-06T17:24:46.24-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "VATSIM data-file refresh",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 4
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Mostly correct. However, as the change is easy to accomplish I will do it in the next days.",
+      "PostedDate": "2014-06-07T04:00:07.503-07:00",
+      "Id": 149133
+    }
+  ]
+}

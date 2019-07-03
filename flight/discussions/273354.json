@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "674829",
+    "ThreadId": "273354",
+    "Html": "\r\n<p>Feature requests shall be posted here.</p>\r\n",
+    "PostedDate": "2011-09-21T10:43:56.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "935696",
+    "ThreadId": "273354",
+    "Html": "<p>when looking at the map it became difficult at times to keep track of the plane that i was following due to the colours of the planes being used, being the same. Therefore would you be able to come up with a colour system that represent different planes or when you click on that plane it is the only plane which you follow.&nbsp;</p>",
+    "PostedDate": "2012-11-02T06:44:34.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "936080",
+    "ThreadId": "273354",
+    "Html": "\r\n<div>Thanks for the feedback:</div>\r\n<ol>\r\n<li><span style=\"font-size:10pt\">When a plane is followed, it is highlighted (as set on the settings page, default yellow).&nbsp;</span>\r\n</li><li><span style=\"font-size:10pt\">When a plane is filtered, it is highlighted in another color (settings page)</span>\r\n</li><li><span style=\"font-size:10pt\">If the filter is applied, only the followed and filtered planes are visible</span>\r\n</li></ol>\r\n<p>Options:</p>\r\n<ol>\r\n<li><span style=\"font-size:10pt\">If this is not working in your place, we should find out why (bug?, unsupported browser?)</span>\r\n</li><li><span style=\"font-size:10pt\">If you mean something different (e.g. the color of the plane icon instead of the background shall change), please elaborate. If you need to email a screenshot or sketch, you can do so (vatgm add online dot ms).</span>\r\n</li></ol>\r\n",
+    "PostedDate": "2012-11-03T09:21:28.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

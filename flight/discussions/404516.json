@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "946693",
+    "ThreadId": "404516",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Great work on this project.</p>\r\n<p>Are there any plans to create / convert this project for Windows 8 / WinRT / XAML / C#?</p>\r\n<p>I am more interested in the Flight status / tracking information, less in the graphical display.</p>\r\n<p>Thanks,<br>\r\nEitan</p>\r\n",
+    "PostedDate": "2012-11-25T09:34:26.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "946946",
+    "ThreadId": "404516",
+    "Html": "\r\n<p>Could you please elaborate on your requirements. It is not completely clear to me what you mean by status / tracking. Sounds very much like Vataware or VATSpy to me.</p>\r\n",
+    "PostedDate": "2012-11-26T02:27:13.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

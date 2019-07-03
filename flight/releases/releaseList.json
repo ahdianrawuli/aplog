@@ -1,0 +1,53 @@
+[
+  {
+    "Id": "0",
+    "Name": "0.8 Ground overlay charts",
+    "DevelopmentStatus": "Beta",
+    "Description": "Ground overlay charts displaying on the Google Map.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-12-16T14:56:03.383-08:00",
+    "Files": [
+      {
+        "Id": "4cb2259f-c584-48a3-ba60-64a7560560d5",
+        "FileName": "Index.htm",
+        "Url": "./0/4cb2259f-c584-48a3-ba60-64a7560560d5",
+        "Type": "Application",
+        "UploadDate": "2011-10-23T13:23:24.36-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "0.7 First test release",
+    "DevelopmentStatus": "Beta",
+    "Description": "This is the 1st version made public. Please use the download *once* for the statistics, and then bookmark the page. You need to have a modern browser with JavaScript enabled. In order to see the console Pop-up must be enabled. See the users manual on how to report bugs.\n\nThe \"Download\" contains a HTML page, just open the link in there.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-10-04T15:13:29.72-07:00",
+    "Files": [
+      {
+        "Id": "a2d32e7d-e820-44c6-96d8-63902e7b3eba",
+        "FileName": "Index.htm",
+        "Url": "./1/a2d32e7d-e820-44c6-96d8-63902e7b3eba",
+        "Type": "Example",
+        "UploadDate": "2011-09-29T15:23:04.843-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "0.9.0xx (FsxWs, multi icon, PHP proxy)",
+    "DevelopmentStatus": "Beta",
+    "Description": "New features over 0.8\n\n1:\nApproach towards real time updates (\"moving map\") by directly connecting to FSX via FsxWs. Shows navaids if FMC files are installed.\n\nTest phase - please be patient if something does not work yet.\nFsxWs: http://fsxws.codeplex.com/\n\n2:\nStarted with different icons for different planes. Would appreciate if someone can draw better icons.\n\n3:\nImproved PHP proxy",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-01-14T08:11:38.653-08:00",
+    "Files": [
+      {
+        "Id": "a7c0bc9e-7c67-46e9-bc8f-b4ea501480be",
+        "FileName": "Index.htm",
+        "Url": "./2/a7c0bc9e-7c67-46e9-bc8f-b4ea501480be",
+        "Type": "Application",
+        "UploadDate": "2012-10-27T12:00:42.58-07:00"
+      }
+    ]
+  }
+]

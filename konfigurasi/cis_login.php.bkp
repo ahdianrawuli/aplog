@@ -1,0 +1,56 @@
+<?php
+
+include 'cis_database.php';
+include 'cis_decrypt.php';
+include 'cis_encrypt.php';
+
+$email	= $_POST['email'];
+$pass	= $_POST['password'];
+$mode_login = $_POST['mode'];
+
+if ($mode_login == 1) {
+	$sql = "select email, password, session from user_reg where email='$email'";
+} else
+if ($mode_login	== 2) {
+        $sql = "select email, password, session from tbl_partner where email='$email'";
+} else
+if ($mode_login	== 3) {
+        $sql = "select email, password, session from tbl_officer where email='$email'";
+} else {
+	echo "<script>alert('Mode tidak ada');window.location='/cis_login.php'</script>";
+}
+
+select($sql,"row");
+$cek_email  	= $get_row{0};
+$hash   	= $get_row{1};
+$cek_pass   	= trim(Decrypt("418736^*&90416934hsdjkf27&*(&","$hash"));
+
+if ($pass == $cek_pass)
+	{
+
+        	$session = Encrypt("hfhasf7f98ae7f90rh3rfewf71312%%23421$", "$hash");
+		$session = str_replace("+"," ",$session);
+
+		if ($mode_login == 1)
+			{ $sql_update_session = "update user_reg set session='$session' where email='$email'"; }
+		else if ($mode_login == 2)
+			{ $sql_update_session = "update tbl_partner set session='$session' where email='$email'"; }
+		else if ($mode_login == 3)
+			{ $sql_update_session = "update tbl_officer set session='$session' where email='$email'"; }
+
+		update($sql_update_session);
+
+		session_start();
+		$_SESSION["session_hash"] = $session;
+		$_SESSION["mode_login"] = $mode_login;
+		echo "<script>window.location='/?opsi=welcome'</script>";
+
+	}
+else
+	{
+		echo "<script>alert('Login Failed [User not available]')</script>";
+		echo "<script>window.location='/cis_login.php'</script>";
+	}
+
+$conn->close();
+?>

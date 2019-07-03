@@ -1,0 +1,3 @@
+<?php
+/*|{"ahdian":{"codiad.editor.indentGuides":"true","codiad.username":"ahdian","codiad.editor.highlightLine":"true","codiad.theme":"default","codiad.editor.wrapMode":"true","codiad.modal.top":"105","codiad.editor.tabSize":"4","codiad.settings.plugin.sync":true,"codiad.editor.fontSize":"13px","codiad.editor.theme":"twilight","codiad.settings.system.sync":true,"codiad.editor.persistentModal":"true","codiad.language":"en","codiad.editor.printMargin":"true","codiad.modal.left":"240","codiad.editor.rightSidebarTrigger":"false","codiad.editor.printMarginColumn":"80","codiad.editor.fileManagerTrigger":"false","codiad.editor.softTabs":"true","username":"ahdian"}}|*/
+?>

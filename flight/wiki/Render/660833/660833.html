@@ -1,0 +1,57 @@
+<div class="wikidoc">
+<p><font size="2"><a href="http://vatgm.codeplex.com/wikipage?title=Development">Development</a> |
+<a href="http://vatgm.codeplex.com/wikipage?title=Next%20steps">Next steps</a> | <a href="http://vatgm.codeplex.com/wikipage?title=Legal">
+Legal stuff</a> | <a href="http://vatgm.codeplex.com/wikipage?title=Ground%20overlay%20charts">
+Providing charts</a> | <a href="http://vatgm.codeplex.com/wikipage?title=Impressions">
+Impressions</a> | <a href="https://fsxws.codeplex.com/" target="_blank">FsxWs</a></font></p>
+<h2>Overview</h2>
+<p>Code:</p>
+<ul>
+<li>Code is written object oriented in JavaScript., there are only (simple) PHP proxies since cross domain requests fail.
+</li><li><a href="http://www.klausbasan.de/vatgmapi/vd.html">Documentation</a> is generated with JsDoc3.
+</li><li>Google Map API V3 is used. </li><li>Google charts is used for any charts. </li><li>Our <a href="https://hg01.codeplex.com/vatgm/">Mercurial repository</a>&#160; at Codeplex. Check the Mercurial links below!
+</li><li>Everything you need, including the libraries, is located under one directory.
+</li><li>In order to run the code without PHP (proxies), test data are included. </li></ul>
+<p>IDE:</p>
+<ul>
+<li>Use what you like. </li><li>You will need a tiny plain webserver in order to run the application, since data are retrieved as
+<font face="Courier New">XMLHttpRequest</font> it will not work on file basis only.
+</li></ul>
+<p>Design rules:</p>
+<ul>
+<li>JsDoc3 annotations are mandatory. </li><li>Indent by tab, not by space. So everybody can use her own indention settings.
+</li><li>Use a fork for your tests! </li></ul>
+<p>Mercurial: </p>
+<ul>
+<li>Video tutorial: <a href="http://tekpub.com/codeplex">http://tekpub.com/codeplex</a>
+</li><li>TortoiseHg: <a href="http://tortoisehg.bitbucket.org/">http://tortoisehg.bitbucket.org/</a>
+</li><li>VS2010 plugin VisualHg: <a href="http://visualhg.codeplex.com/">http://visualhg.codeplex.com/</a>
+</li><li>Always <strong>use a FORK for initial check in</strong>, do not provide to the trunk before coordinative meeting
+</li></ul>
+<p>Writing documentation</p>
+<ul>
+<li>Using <a href="http://codeplex.codeplex.com/wikipage?title=WindowsLiveWriter">
+Windows Live Writer</a> </li><li>CodePlex <a href="http://codeplex.codeplex.com/wikipage?title=CodePlex%20Wiki%20Markup%20Guide">
+Wiki Markup Guide</a> </li></ul>
+<h2>Start to write code</h2>
+<ul>
+<li>Choose a topic: See <a href="http://vatgm.codeplex.com/wikipage?title=Next%20steps">
+next steps</a> </li><li>Set up your IDE </li><li>Create a <strong>fork</strong> of the source code </li></ul>
+<h2>Development FAQs</h2>
+<ul>
+<li>Why is there some PHP code required? <br>
+VatGM uses <font face="Courier New">XMLHttpRequest</font>, which is subject of the “same origin policy”. We need to read data from
+<font face="Courier New">&lt;someVatsimServer&gt;</font>, while the application is hosted at
+<font face="Courier New">&lt;someOtherServer&gt;</font>. Since <font face="Courier New">
+&lt;someVatsimServer&gt;</font> does <strong>not explicitly</strong> send a cross domain header, any access from
+<font face="Courier New">XMLHttpRequest </font>is blocked (by the Browser). The PHP code is a proxy located at&#160;
+<font face="Courier New">&lt;someOtherServer&gt;,</font> hence called by <font face="Courier New">
+XMLHttpRequest </font>locally and then queries <font face="Courier New">&lt;someVatsimServer&gt;</font> for us. If the data file was sent with a cross domain header we’d be able to dismiss the proxy.
+</li><li>Why is the project developed in JavaScript? <br>
+There are multiple alternatives, it could have been written server side with PHP, Java, .net … All the pros and cons are well known, however there were basically three main reasons: a) Google Maps can be well programmed with JavaScript and b) we almost need
+ no server code, so the application can be easily hosted, and c) no installation is needed. Typical disadvantages are the cross browser issues, performance on (CPU) weak devices, and larger data transfer. I do not want to discuss the architecture on a general
+ level, detailed feedback / questions are welcome.&#160; </li><li>CodePlex FAQs, see <a href="http://codeplex.codeplex.com/wikipage?title=CodePlex%20FAQ&referringTitle=Documentation">
+here</a> </li><li>I am a C&#43;&#43; programmer, how could I help? Check out FsxWs (<a title="https://fsxws.codeplex.com/" href="https://fsxws.codeplex.com/">https://fsxws.codeplex.com/</a>)
+</li><li>Is Google Earth a topic? Yes you could join FsxWs, and/or SSG (<a title="http://ssg.codeplex.com/" href="http://ssg.codeplex.com/">http://ssg.codeplex.com/</a>)
+</li></ul>
+</div><div class="ClearBoth"></div>
